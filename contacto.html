@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — Difortuna Studio</title>
+  <meta name="description" content="Contacta con Difortuna Studio. Estudio de moda y asesoría de imagen en Barcelona.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 120px;
+      align-items: start;
+    }
+    
+    .contact-form {
+      background: #fff;
+      padding: 56px;
+    }
+    
+    .contact-info-item {
+      margin-bottom: 40px;
+    }
+    
+    .contact-info-item h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 12px;
+    }
+    
+    .contact-info-item p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #1A1A1A;
+    }
+    
+    .contact-info-item a {
+      color: #8B7355;
+      transition: opacity 0.3s ease;
+    }
+    
+    .contact-info-item a:hover {
+      opacity: 0.7;
+    }
+    
+    .map-placeholder {
+      aspect-ratio: 16/9;
+      background: #EFEFE9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 24px;
+      margin-top: 8px;
+    }
+    
+    .social-links a {
+      font-size: 14px;
+      color: #1A1A1A;
+      position: relative;
+    }
+    
+    .social-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #8B7355;
+      transition: width 0.3s ease;
+    }
+    
+    .social-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 968px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+      
+      .contact-form {
+        padding: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Difortuna</a>
+    <div class="nav-links">
+      <a href="index.html#estudio" class="nav-link">Estudio</a>
+      <a href="servicios.html" class="nav-link">Servicios</a>
+      <a href="difor.html" class="nav-link">DIFOR</a>
+      <a href="index.html#proyectos" class="nav-link">Proyectos</a>
+      <a href="contacto.html" class="btn-primary" style="background: #1A1A1A; color: #F5F5F2;">Hablemos</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section style="min-height: 50vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 120px 48px 60px;">
+    <div class="container-wide">
+      <span class="label fade-in">Contacto</span>
+      <h1 class="title-xl fade-in fade-in-delay-1" style="font-size: clamp(40px, 8vw, 90px); margin-bottom: 24px;">
+        Hablemos.
+      </h1>
+      <p class="body-text fade-in fade-in-delay-2" style="max-width: 500px;">
+        ¿Tienes un proyecto en mente? Ya sea una sesión de asesoría, un vestido 
+        a medida, una pieza DIFOR o el vestuario de tu próxima producción — 
+        queremos escucharte.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="section" style="padding-top: 60px;">
+    <div class="container-wide">
+      <div class="contact-grid">
+        
+        <!-- Info -->
+        <div class="fade-in">
+          <div class="contact-info-item">
+            <h3>Email</h3>
+            <p><a href="mailto:hola@difortunastudio.com">hola@difortunastudio.com</a></p>
+          </div>
+          
+          <div class="contact-info-item">
+            <h3>Teléfono</h3>
+            <p><a href="tel:+34630912692">+34 630 912 692</a></p>
+            <p style="font-size: 13px; color: #999; margin-top: 4px;">Cita previa</p>
+          </div>
+          
+          <div class="contact-info-item">
+            <h3>Estudio</h3>
+            <p>
+              Joan d'Austria 95-97, 2º 3ª<br>
+              08018 Barcelona
+            </p>
+            <p style="font-size: 13px; color: #999; margin-top: 8px;">
+              Visitas con cita previa
+            </p>
+          </div>
+          
+          <div class="contact-info-item">
+            <h3>Horario</h3>
+            <p>
+              Lunes a Viernes<br>
+              10:00 — 14:00<br>
+              16:00 — 19:00
+            </p>
+          </div>
+          
+          <div class="contact-info-item">
+            <h3>Síguenos</h3>
+            <div class="social-links">
+              <a href="#" target="_blank">Instagram</a>
+              <a href="#" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+
+          <!-- Map placeholder -->
+          <div class="map-placeholder">
+            <span class="sans" style="font-size: 12px; color: #999; letter-spacing: 1px;">
+              MAPA — POBLENOU, BARCELONA
+            </span>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="contact-form fade-in fade-in-delay-1">
+          <h2 class="serif" style="font-size: 28px; font-weight: 400; font-style: italic; margin-bottom: 8px;">
+            Cuéntanos tu proyecto
+          </h2>
+          <p class="sans" style="font-size: 14px; color: #888; margin-bottom: 40px;">
+            Te responderemos en 24-48 horas.
+          </p>
+          
+          <form action="https://formspree.io/f/TU_FORM_ID" method="POST">
+            <div class="form-group">
+              <label>Nombre *</label>
+              <input type="text" name="nombre" required>
+            </div>
+            
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label>Teléfono</label>
+              <input type="tel" name="telefono">
+            </div>
+            
+            <div class="form-group">
+              <label>¿Cómo podemos ayudarte? *</label>
+              <select name="servicio" required>
+                <option value="">Selecciona una opción</option>
+                <option value="asesoria">Asesoría de Imagen</option>
+                <option value="confeccion">Confección a Medida</option>
+                <option value="vestuario">Vestuario para Producción</option>
+                <option value="colecciones">Colecciones / Muestrarios</option>
+                <option value="difor">Piezas DIFOR</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label>Cuéntanos más sobre tu proyecto *</label>
+              <textarea name="mensaje" rows="5" placeholder="¿Qué tienes en mente? ¿Para cuándo lo necesitas? ¿Alguna referencia visual?" required></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label>Presupuesto orientativo</label>
+              <select name="presupuesto">
+                <option value="">Prefiero no decirlo</option>
+                <option value="menos-500">Menos de 500€</option>
+                <option value="500-1000">500€ - 1.000€</option>
+                <option value="1000-2500">1.000€ - 2.500€</option>
+                <option value="2500-5000">2.500€ - 5.000€</option>
+                <option value="mas-5000">Más de 5.000€</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label>¿Cómo nos has conocido?</label>
+              <select name="origen">
+                <option value="">Selecciona una opción</option>
+                <option value="instagram">Instagram</option>
+                <option value="google">Google</option>
+                <option value="recomendacion">Recomendación</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            
+            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 16px; text-align: center;">
+              Enviar mensaje
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ o Info adicional -->
+  <section class="section section-warm">
+    <div class="container-narrow" style="text-align: center;">
+      <h2 class="title-md fade-in" style="margin-bottom: 48px;">
+        Preguntas frecuentes
+      </h2>
+      
+      <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+        <div class="fade-in" style="border-bottom: 1px solid rgba(26,26,26,0.1); padding: 24px 0;">
+          <h3 class="sans" style="font-size: 15px; font-weight: 500; margin-bottom: 12px;">
+            ¿Necesito cita previa para visitar el estudio?
+          </h3>
+          <p class="body-text" style="margin: 0;">
+            Sí, trabajamos con cita previa para poder dedicarte el tiempo que mereces. 
+            Escríbenos o llámanos y encontramos un hueco.
+          </p>
+        </div>
+        
+        <div class="fade-in" style="border-bottom: 1px solid rgba(26,26,26,0.1); padding: 24px 0;">
+          <h3 class="sans" style="font-size: 15px; font-weight: 500; margin-bottom: 12px;">
+            ¿Cuánto tarda una prenda a medida?
+          </h3>
+          <p class="body-text" style="margin: 0;">
+            Depende de la complejidad, pero normalmente entre 4 y 8 semanas. 
+            Para novias recomendamos empezar con al menos 4-6 meses de antelación.
+          </p>
+        </div>
+        
+        <div class="fade-in" style="border-bottom: 1px solid rgba(26,26,26,0.1); padding: 24px 0;">
+          <h3 class="sans" style="font-size: 15px; font-weight: 500; margin-bottom: 12px;">
+            ¿Trabajáis fuera de Barcelona?
+          </h3>
+          <p class="body-text" style="margin: 0;">
+            Sí. Para asesorías podemos hacer sesiones online. Para confección, 
+            necesitamos al menos una prueba presencial, pero el resto puede 
+            coordinarse a distancia.
+          </p>
+        </div>
+        
+        <div class="fade-in" style="padding: 24px 0;">
+          <h3 class="sans" style="font-size: 15px; font-weight: 500; margin-bottom: 12px;">
+            ¿Las piezas DIFOR se pueden personalizar?
+          </h3>
+          <p class="body-text" style="margin: 0;">
+            Absolutamente. Podemos ajustar largos, modificar detalles o crear 
+            una pieza nueva inspirada en nuestros diseños. Cada pieza es única.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container-wide" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+      <div>
+        <span class="footer-brand">Difortuna Studio</span>
+        <span class="footer-sub">
+          Joan d'Austria 95-97, 2º 3ª<br>
+          08018 Barcelona
+        </span>
+      </div>
+      <div class="footer-links">
+        <a href="#" class="nav-link">Instagram</a>
+        <a href="#" class="nav-link">LinkedIn</a>
+      </div>
+      <span class="footer-copy">© 2025 Difortuna Studio</span>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Fade in on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIFOR — Piezas Atemporales</title>
+  <meta name="description" content="Sastrería contemporánea y piezas únicas hechas a mano en Barcelona. Moda que se hereda, no que se consume.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* DIFOR specific overrides */
+    body {
+      background: #FAFAF8;
+    }
+    
+    .serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 300;
+      font-style: normal;
+      letter-spacing: 3px;
+    }
+    
+    .nav-link::after {
+      background: #1A1A1A;
+    }
+
+    .h-line {
+      width: 60px;
+      height: 1px;
+      background: #1A1A1A;
+      opacity: 0.3;
+    }
+
+    .piece-card {
+      cursor: pointer;
+      margin-bottom: 40px;
+    }
+    
+    .piece-card .image-container {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: #EFEFE9;
+      margin-bottom: 20px;
+    }
+    
+    .piece-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    .piece-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: 1px solid rgba(26,26,26,0.2);
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .pieces-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .encargos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .encargos-form {
+      background: #FAFAF8;
+      padding: 48px;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .detail-item .line {
+      width: 32px;
+      height: 1px;
+      background: rgba(26,26,26,0.2);
+    }
+
+    @media (max-width: 968px) {
+      .pieces-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .encargos-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .pieces-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="difor.html" class="nav-logo">DIFOR</a>
+    <div class="nav-links">
+      <a href="#piezas" class="nav-link">Piezas</a>
+      <a href="#historia" class="nav-link">Historia</a>
+      <a href="#encargos" class="nav-link">Encargos</a>
+      <a href="index.html" class="nav-link" style="opacity: 0.5;">Studio</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 48px; position: relative;">
+    <div class="h-line fade-in" style="margin-bottom: 40px;"></div>
+    
+    <h1 class="serif fade-in fade-in-delay-1" style="font-size: clamp(56px, 12vw, 140px); font-weight: 300; letter-spacing: -2px; line-height: 0.9; margin-bottom: 32px;">
+      DIFOR
+    </h1>
+    
+    <p class="serif fade-in fade-in-delay-2" style="font-size: clamp(18px, 2.5vw, 24px); font-weight: 300; font-style: italic; color: #666; letter-spacing: 1px;">
+      Piezas atemporales, hechas a mano
+    </p>
+
+    <div class="h-line fade-in fade-in-delay-3" style="margin-top: 40px;"></div>
+
+    <div class="scroll-indicator" style="position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px;">
+      <span class="sans" style="font-size: 9px; letter-spacing: 2px; color: #999;">SCROLL</span>
+      <div style="width: 1px; height: 40px; background: linear-gradient(to bottom, #999, transparent);"></div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section style="padding: 120px 48px; max-width: 900px; margin: 0 auto; text-align: center;">
+    <p class="serif fade-in" style="font-size: clamp(24px, 3.5vw, 36px); font-weight: 300; line-height: 1.6; color: #1A1A1A;">
+      Sastrería contemporánea para quienes entienden que la elegancia 
+      no se grita. Piezas diseñadas para durar décadas, no temporadas.
+    </p>
+    
+    <div class="h-line fade-in" style="margin: 60px auto;"></div>
+    
+    <p class="sans fade-in" style="font-size: 13px; line-height: 2; color: #888; font-weight: 300; max-width: 500px; margin: 0 auto; letter-spacing: 0.5px;">
+      Cada pieza es confeccionada en nuestro estudio de Barcelona. 
+      Tejidos europeos, costuras invisibles, siluetas que trascienden 
+      la moda. Ediciones limitadas o piezas únicas.
+    </p>
+  </section>
+
+  <!-- Piezas -->
+  <section id="piezas" style="padding: 80px 48px 120px;">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px;" class="fade-in">
+        <div>
+          <span class="sans" style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #999; display: block; margin-bottom: 16px;">
+            Colección Permanente
+          </span>
+          <h2 class="serif" style="font-size: clamp(32px, 4vw, 48px); font-weight: 300;">
+            Piezas
+          </h2>
+        </div>
+        <span class="sans" style="font-size: 12px; color: #999;">6 piezas</span>
+      </div>
+
+      <div class="pieces-grid">
+        
+        <div class="piece-card fade-in">
+          <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=800&q=80" alt="Abrigo Lungo">
+          </div>
+          <div style="padding: 0 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+              <h3 class="serif" style="font-size: 20px; font-weight: 400;">Abrigo Lungo</h3>
+              <span class="sans" style="font-size: 13px; font-weight: 400;">890€</span>
+            </div>
+            <p class="sans" style="font-size: 12px; color: #888; margin-bottom: 12px; font-weight: 300;">Lana virgen negro</p>
+            <span class="status-badge">Disponible</span>
+          </div>
+        </div>
+
+        <div class="piece-card fade-in fade-in-delay-1">
+          <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=800&q=80" alt="Blazer Estructura">
+          </div>
+          <div style="padding: 0 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+              <h3 class="serif" style="font-size: 20px; font-weight: 400;">Blazer Estructura</h3>
+              <span class="sans" style="font-size: 13px; font-weight: 400;">650€</span>
+            </div>
+            <p class="sans" style="font-size: 12px; color: #888; margin-bottom: 12px; font-weight: 300;">Crêpe de lana crudo</p>
+            <span class="status-badge">Disponible</span>
+          </div>
+        </div>
+
+        <div class="piece-card fade-in fade-in-delay-2">
+          <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80" alt="Pantalón Pliegue">
+          </div>
+          <div style="padding: 0 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+              <h3 class="serif" style="font-size: 20px; font-weight: 400;">Pantalón Pliegue</h3>
+              <span class="sans" style="font-size: 13px; font-weight: 400;">380€</span>
+            </div>
+            <p class="sans" style="font-size: 12px; color: #888; margin-bottom: 12px; font-weight: 300;">Lino italiano arena</p>
+            <span class="status-badge">Últimas unidades</span>
+          </div>
+        </div>
+
+        <div class="piece-card fade-in">
+          <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80" alt="Chaleco Atelier">
+          </div>
+          <div style="padding: 0 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+              <h3 class="serif" style="font-size: 20px; font-weight: 400;">Chaleco Atelier</h3>
+              <span class="sans" style="font-size: 13px; font-weight: 400;">420€</span>
+            </div>
+            <p class="sans" style="font-size: 12px; color: #888; margin-bottom: 12px; font-weight: 300;">Gabardina de algodón marfil</p>
+            <span class="status-badge">Disponible</span>
+          </div>
+        </div>
+
+        <div class="piece-card fade-in fade-in-delay-1">
+          <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80" alt="Falda Organza">
+          </div>
+          <div style="padding: 0 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+              <h3 class="serif" style="font-size: 20px; font-weight: 400;">Falda Organza</h3>
+              <span class="sans" style="font-size: 13px; font-weight: 400;">340€</span>
+            </div>
+            <p class="sans" style="font-size: 12px; color: #888; margin-bottom: 12px; font-weight: 300;">Seda organza nude</p>
+            <span class="status-badge">Por encargo</span>
+          </div>
+        </div>
+
+        <div class="piece-card fade-in fade-in-delay-2">
+          <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=800&q=80" alt="Traje Windowpane">
+          </div>
+          <div style="padding: 0 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+              <h3 class="serif" style="font-size: 20px; font-weight: 400;">Traje Windowpane</h3>
+              <span class="sans" style="font-size: 13px; font-weight: 400;">1.200€</span>
+            </div>
+            <p class="sans" style="font-size: 12px; color: #888; margin-bottom: 12px; font-weight: 300;">Lana fría cuadro ventana</p>
+            <span class="status-badge">Por encargo</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Historia -->
+  <section id="historia" class="section-dark" style="padding: 120px 48px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 120px; align-items: center;" class="grid-2">
+      <div class="fade-in">
+        <span class="sans" style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); display: block; margin-bottom: 24px;">
+          Nuestra Historia
+        </span>
+        
+        <h2 class="serif" style="font-size: clamp(32px, 4vw, 48px); font-weight: 300; margin-bottom: 32px; line-height: 1.2;">
+          Dos generaciones,<br>un mismo oficio
+        </h2>
+        
+        <p class="sans" style="font-size: 14px; line-height: 2; color: rgba(255,255,255,0.7); font-weight: 300; margin-bottom: 24px;">
+          DIFOR nace de una herencia tangible: el conocimiento de más de 
+          treinta años de modistería transmitido de madre a hija. Elisabeth, 
+          maestra del oficio, y Fiorella, con la visión contemporánea.
+        </p>
+        
+        <p class="sans" style="font-size: 14px; line-height: 2; color: rgba(255,255,255,0.7); font-weight: 300; margin-bottom: 40px;">
+          Cada pieza es un diálogo entre tradición y presente. Patrones 
+          trazados a mano, tejidos seleccionados personalmente, costuras 
+          que aguantan el paso del tiempo. No seguimos temporadas porque 
+          lo atemporal no caduca.
+        </p>
+
+        <div class="h-line h-line-light" style="margin-bottom: 40px; opacity: 0.3;"></div>
+
+        <p class="serif" style="font-size: 18px; font-style: italic; color: rgba(255,255,255,0.5);">
+          "La ropa bien hecha no necesita explicaciones."
+        </p>
+      </div>
+
+      <div class="fade-in fade-in-delay-1" style="aspect-ratio: 4/5; background: url('https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800&q=80'); background-size: cover; background-position: center;"></div>
+    </div>
+  </section>
+
+  <!-- Proceso -->
+  <section style="padding: 120px 48px; background: #FAFAF8;">
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <span class="sans fade-in" style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #999; display: block; margin-bottom: 24px;">
+        El Proceso
+      </span>
+      <h2 class="serif fade-in" style="font-size: clamp(28px, 3.5vw, 40px); font-weight: 300; margin-bottom: 60px;">
+        De la idea a tus manos
+      </h2>
+      
+      <div class="grid-4" style="text-align: center;">
+        <div class="fade-in">
+          <span class="serif" style="font-size: 32px; font-weight: 300; color: #CCC; display: block; margin-bottom: 16px;">01</span>
+          <span class="sans" style="font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Diseño</span>
+        </div>
+        <div class="fade-in fade-in-delay-1">
+          <span class="serif" style="font-size: 32px; font-weight: 300; color: #CCC; display: block; margin-bottom: 16px;">02</span>
+          <span class="sans" style="font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Patronaje</span>
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <span class="serif" style="font-size: 32px; font-weight: 300; color: #CCC; display: block; margin-bottom: 16px;">03</span>
+          <span class="sans" style="font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Confección</span>
+        </div>
+        <div class="fade-in fade-in-delay-3">
+          <span class="serif" style="font-size: 32px; font-weight: 300; color: #CCC; display: block; margin-bottom: 16px;">04</span>
+          <span class="sans" style="font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Acabados</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Encargos -->
+  <section id="encargos" style="padding: 120px 48px; background: #F0EDE8;">
+    <div style="max-width: 1000px; margin: 0 auto;" class="encargos-grid">
+      
+      <!-- Texto -->
+      <div class="fade-in">
+        <span class="sans" style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #888; display: block; margin-bottom: 24px;">
+          Piezas Únicas por Encargo
+        </span>
+        
+        <h2 class="serif" style="font-size: clamp(32px, 4vw, 44px); font-weight: 300; margin-bottom: 24px; line-height: 1.2;">
+          Reserva tu cita<br>en el estudio
+        </h2>
+        
+        <p class="sans" style="font-size: 14px; line-height: 2; color: #666; font-weight: 300; margin-bottom: 32px;">
+          Cada pieza DIFOR es única. Si buscas algo especial, te invitamos 
+          a visitarnos en el estudio. Hablaremos de tu idea, tomaremos 
+          medidas y seleccionaremos tejidos juntas.
+        </p>
+
+        <div style="margin-bottom: 32px;">
+          <div class="detail-item">
+            <div class="line"></div>
+            <span class="sans" style="font-size: 13px; color: #666;">Consulta inicial: 1 hora</span>
+          </div>
+          <div class="detail-item">
+            <div class="line"></div>
+            <span class="sans" style="font-size: 13px; color: #666;">Proceso: 4-8 semanas</span>
+          </div>
+          <div class="detail-item">
+            <div class="line"></div>
+            <span class="sans" style="font-size: 13px; color: #666;">Sin compromiso de compra</span>
+          </div>
+        </div>
+
+        <div class="h-line" style="margin-bottom: 32px; opacity: 0.2;"></div>
+
+        <p class="sans" style="font-size: 12px; color: #999;">
+          Joan d'Austria 95-97, 2º 3ª<br>
+          08018 Barcelona
+        </p>
+      </div>
+
+      <!-- Formulario -->
+      <form class="encargos-form fade-in fade-in-delay-1" action="https://formspree.io/f/TU_FORM_ID" method="POST">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" name="nombre" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" name="telefono">
+        </div>
+        
+        <div class="form-group">
+          <label>¿Qué tienes en mente?</label>
+          <select name="tipo_pieza">
+            <option value="">Selecciona una opción</option>
+            <option value="abrigo">Abrigo o sobretodo</option>
+            <option value="blazer">Blazer o americana</option>
+            <option value="traje">Traje completo</option>
+            <option value="pantalon">Pantalón a medida</option>
+            <option value="vestido">Vestido</option>
+            <option value="otro">Otra pieza</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Fecha preferida</label>
+          <input type="date" name="fecha">
+        </div>
+        
+        <div class="form-group">
+          <label>Horario preferido</label>
+          <select name="horario">
+            <option value="">Selecciona horario</option>
+            <option value="manana">Mañana (10:00 - 14:00)</option>
+            <option value="tarde">Tarde (16:00 - 19:00)</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Cuéntanos más (opcional)</label>
+          <textarea name="mensaje" rows="3" placeholder="Inspiración, ocasión, ideas..."></textarea>
+        </div>
+        
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 16px; text-align: center;">
+          Solicitar cita
+        </button>
+        
+        <p class="sans" style="font-size: 11px; color: #999; text-align: center; margin-top: 16px;">
+          Te confirmaremos disponibilidad en 24-48h
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="padding: 60px 48px; background: #FAFAF8; border-top: 1px solid rgba(26,26,26,0.1);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+      <div>
+        <span class="serif" style="font-size: 16px; font-weight: 300; letter-spacing: 2px; display: block; margin-bottom: 8px;">DIFOR</span>
+        <span class="sans" style="font-size: 11px; color: #999;">by Difortuna Studio</span>
+      </div>
+      
+      <div style="text-align: right;">
+        <span class="sans" style="font-size: 11px; color: #999; display: block; margin-bottom: 4px;">Joan d'Austria 95-97, 2º 3ª</span>
+        <span class="sans" style="font-size: 11px; color: #999;">08018 Barcelona</span>
+      </div>
+      
+      <div style="display: flex; gap: 32px;">
+        <a href="#" class="nav-link" style="font-size: 11px;">Instagram</a>
+        <a href="index.html" class="nav-link" style="font-size: 11px;">Studio</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Fade in on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

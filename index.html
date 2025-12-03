@@ -2,683 +2,276 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DifortunaStudio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --black: #0a0a0a;
-      --white: #ffffff;
-      --gray-light: #f5f5f5;
-      --gray-medium: #888888;
-      --accent: #ff6b35;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--white);
-      color: var(--black);
-      overflow-x: hidden;
-    }
-
-    /* Typography System */
-    .headline-xl {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(4rem, 12vw, 12rem);
-      font-weight: 900;
-      line-height: 0.85;
-      letter-spacing: -0.02em;
-    }
-
-    .headline-lg {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 6vw, 6rem);
-      font-weight: 700;
-      line-height: 0.9;
-      letter-spacing: -0.01em;
-    }
-
-    .headline-md {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 3.5rem);
-      font-weight: 600;
-      line-height: 1.1;
-    }
-
-    .body-lg {
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-      line-height: 1.6;
-      font-weight: 400;
-    }
-
-    .body-md {
-      font-size: 1rem;
-      line-height: 1.5;
-      font-weight: 400;
-    }
-
-    .label {
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    /* Layout System */
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .grid {
-      display: grid;
-      gap: 2rem;
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      padding: 4rem 0;
-    }
-
-    .hero-logo {
-      position: absolute;
-      top: 3rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-    }
-
-    .hero-logo svg {
-      width: 80px;
-      height: 80px;
-      animation: logoFloat 6s ease-in-out infinite;
-    }
-
-    @keyframes logoFloat {
-      0%, 100% { 
-        transform: translateY(0px) rotate(0deg);
-      }
-      25% { 
-        transform: translateY(-5px) rotate(1deg);
-      }
-      50% { 
-        transform: translateY(-3px) rotate(0deg);
-      }
-      75% { 
-        transform: translateY(-8px) rotate(-1deg);
-      }
-    }
-
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      min-height: 70vh;
-    }
-
-    .hero-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .hero-headline {
-      position: relative;
-    }
-
-    .hero-headline::after {
-      content: '';
-      position: absolute;
-      bottom: -1rem;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: var(--accent);
-    }
-
-    .hero-visual {
-      position: relative;
-      height: 600px;
-      background: var(--gray-light);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .hero-visual::before {
-      content: 'DIFORTUNA';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-5deg);
-      font-family: 'Playfair Display', serif;
-      font-size: 8rem;
-      font-weight: 900;
-      color: rgba(10, 10, 10, 0.08);
-      letter-spacing: -0.05em;
-      user-select: none;
-      pointer-events: none;
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { 
-        opacity: 0.08;
-        transform: translate(-50%, -50%) rotate(-5deg) scale(1);
-      }
-      50% { 
-        opacity: 0.15;
-        transform: translate(-50%, -50%) rotate(-3deg) scale(1.02);
-      }
-    }
-
-    .floating-elements {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    .floating-circle {
-      position: absolute;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .circle-1 {
-      width: 120px;
-      height: 120px;
-      top: 10%;
-      right: 15%;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .circle-2 {
-      width: 80px;
-      height: 80px;
-      bottom: 20%;
-      left: 10%;
-      background: var(--black);
-      animation: float 8s ease-in-out infinite reverse;
-    }
-
-    .circle-3 {
-      width: 50px;
-      height: 50px;
-      top: 60%;
-      right: 30%;
-      background: var(--gray-medium);
-      animation: float 10s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-
-    /* About Section */
-    .about {
-      padding: 8rem 0;
-      background: var(--gray-light);
-    }
-
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
-    .about-label {
-      position: sticky;
-      top: 2rem;
-    }
-
-    .about-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .highlight {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    /* Services Section */
-    .services {
-      padding: 8rem 0;
-    }
-
-    .services-header {
-      text-align: center;
-      margin-bottom: 6rem;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-    }
-
-    .service-item {
-      padding: 3rem 0;
-      border-top: 1px solid var(--gray-medium);
-      position: relative;
-      transition: all 0.3s ease;
-    }
-
-    .service-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .service-item:hover .service-number {
-      color: var(--accent);
-    }
-
-    .service-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem;
-      font-weight: 900;
-      color: var(--gray-light);
-      transition: all 0.3s ease;
-      margin-bottom: 1rem;
-    }
-
-    .service-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .service-description {
-      color: var(--gray-medium);
-      line-height: 1.6;
-    }
-
-    /* Contact Section */
-    .contact {
-      padding: 8rem 0;
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .contact-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
-    .contact-info h2 {
-      color: var(--white);
-      margin-bottom: 2rem;
-    }
-
-    .contact-form {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 3rem;
-      border-radius: 2px;
-      backdrop-filter: blur(10px);
-    }
-
-    .form-group {
-      margin-bottom: 2rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 0;
-      color: var(--white);
-      font-family: inherit;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .form-group input[type="file"] {
-      background: rgba(255, 255, 255, 0.1) !important;
-      border: 2px dashed rgba(255, 255, 255, 0.3) !important;
-      padding: 2rem !important;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .form-group input[type="file"]:hover {
-      border-color: var(--accent);
-      background: rgba(255, 255, 255, 0.05) !important;
-    }
-
-    .form-group input[type="file"]:focus {
-      border-color: var(--accent);
-    }
-
-    .submit-btn {
-      background: var(--accent);
-      color: var(--white);
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 0;
-      cursor: pointer;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      width: 100%;
-    }
-
-    .submit-btn:hover {
-      background: var(--white);
-      color: var(--black);
-    }
-
-    .direct-contact {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .direct-contact a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .network-note {
-      margin-top: 2rem;
-      font-style: italic;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    /* Footer */
-    .footer {
-      background: var(--black);
-      padding: 4rem 0 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--gray-medium);
-    }
-
-    .footer-links a {
-      color: var(--gray-medium);
-      text-decoration: none;
-      margin-left: 2rem;
-      transition: color 0.3s ease;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .container {
-        padding: 0 1rem;
-      }
-
-      .hero-content,
-      .about-content,
-      .contact-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-
-      .hero-visual {
-        height: 400px;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .grid-2,
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-content {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-
-      .footer-links a {
-        margin: 0 1rem;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Difortuna Studio — Estética, Artesanía y Visión Creativa</title>
+  <meta name="description" content="Estudio creativo en Barcelona. Asesoría de imagen, confección a medida y vestuario para producciones.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-logo">
-      <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="100" r="95" fill="none" stroke="#0a0a0a" stroke-width="2"/>
-        <circle cx="100" cy="100" r="88" fill="none" stroke="#0a0a0a" stroke-width="1"/>
-        <text x="100" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0a0a0a" letter-spacing="2">DIFORTUNA</text>
-        <line x1="65" y1="100" x2="135" y2="100" stroke="#0a0a0a" stroke-width="1"/>
-        <text x="100" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#0a0a0a" letter-spacing="3">STUDIO</text>
-      </svg>
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Difortuna</a>
+    <div class="nav-links">
+      <a href="index.html#estudio" class="nav-link">Estudio</a>
+      <a href="servicios.html" class="nav-link">Servicios</a>
+      <a href="difor.html" class="nav-link">DIFOR</a>
+      <a href="index.html#proyectos" class="nav-link">Proyectos</a>
+      <a href="contacto.html" class="btn-primary">Hablemos</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; position: relative;">
+    <div style="max-width: 1000px;">
+      <div class="fade-in">
+        <span class="label">Estudio Creativo — Barcelona</span>
+      </div>
+      
+      <h1 class="title-xl fade-in fade-in-delay-1" style="margin-bottom: 32px;">
+        Difortuna<br>Studio
+      </h1>
+      
+      <p class="tagline fade-in fade-in-delay-2" style="margin-bottom: 48px;">
+        Estética, artesanía y visión creativa.
+      </p>
+      
+      <p class="body-text fade-in fade-in-delay-3" style="max-width: 500px;">
+        Asesoría de imagen, confección a medida y vestuario para producciones. 
+        Un estudio donde cada prenda cuenta una historia y cada cliente 
+        descubre su mejor versión.
+      </p>
     </div>
     
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="headline-xl hero-headline">Ideas<br>con<br>alma</h1>
-          <p class="body-lg">Diseñamos marcas, apps y experiencias con propósito. Desde Barcelona, conectamos creatividad y estrategia para dar vida a proyectos que importan.</p>
+    <div class="scroll-indicator" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px;">
+      <span class="sans" style="font-size: 10px; letter-spacing: 2px; color: #999;">SCROLL</span>
+      <div style="width: 1px; height: 40px; background: linear-gradient(to bottom, #999, transparent);"></div>
+    </div>
+  </section>
+
+  <!-- Qué Hacemos -->
+  <section id="servicios" class="section section-light">
+    <div class="container-wide">
+      <span class="label fade-in">Qué Hacemos</span>
+      <h2 class="title-lg fade-in fade-in-delay-1" style="margin-bottom: 80px; max-width: 700px;">
+        Moda con intención, imagen con propósito.
+      </h2>
+      
+      <div>
+        <div class="service-item fade-in">
+          <span class="service-num">01</span>
+          <div>
+            <h3 class="service-title">Asesoría de Imagen</h3>
+            <p class="service-desc">Descubre tu paleta de colores y las siluetas que mejor te sientan. Body Shape Analysis, Colour Styling Analysis y Personal Styling con outfits curados para ti.</p>
+          </div>
         </div>
         
-        <div class="hero-visual">
-          <div class="floating-elements">
-            <div class="floating-circle circle-1"></div>
-            <div class="floating-circle circle-2"></div>
-            <div class="floating-circle circle-3"></div>
+        <div class="service-item fade-in">
+          <span class="service-num">02</span>
+          <div>
+            <h3 class="service-title">Confección a Medida</h3>
+            <p class="service-desc">Vestidos de fiesta, novia, sastrería. Diseño, patronaje y confección artesanal en nuestro estudio de Barcelona. Cada pieza, única. Cada detalle, cuidado.</p>
+          </div>
+        </div>
+        
+        <div class="service-item fade-in">
+          <span class="service-num">03</span>
+          <div>
+            <h3 class="service-title">Vestuario & Producciones</h3>
+            <p class="service-desc">Estilismo y diseño de vestuario para cine, teatro, publicidad y sesiones fotográficas. También alquiler de piezas para producciones.</p>
+          </div>
+        </div>
+        
+        <div class="service-item fade-in">
+          <span class="service-num">04</span>
+          <div>
+            <h3 class="service-title">Colecciones & Muestrarios</h3>
+            <p class="service-desc">Producción de colecciones de moda a pequeña escala. Desde el diseño hasta la confección final. Ideal para marcas emergentes.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="fade-in" style="margin-top: 60px;">
+        <a href="servicios.html" class="btn-primary">Ver todos los servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="section section-dark" style="text-align: center;">
+    <div class="container-narrow">
+      <blockquote class="quote fade-in">
+        "Vestirse bien no es vanidad, es conocerse. 
+        Cada cuerpo tiene su lenguaje, cada persona sus colores."
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Proyectos -->
+  <section id="proyectos" class="section">
+    <div class="container-wide">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; flex-wrap: wrap; gap: 24px;">
+        <div>
+          <span class="label fade-in">Proyectos Seleccionados</span>
+          <h2 class="title-lg fade-in fade-in-delay-1">
+            Historias que<br>hemos vestido.
+          </h2>
+        </div>
+        <a href="#" class="btn-primary fade-in fade-in-delay-2">Ver todos</a>
+      </div>
+      
+      <div class="grid-3">
+        <!-- Proyecto 1 -->
+        <div class="project-card fade-in" style="aspect-ratio: 4/5;">
+          <img src="https://images.unsplash.com/photo-1594552072238-b8a33785b261?w=800&q=80" alt="Vestido de Novia">
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <span class="project-category">Confección a Medida</span>
+            <h3 class="project-title">Vestido de Novia Luna</h3>
+          </div>
+        </div>
+        
+        <!-- Proyecto 2 -->
+        <div class="project-card fade-in fade-in-delay-1" style="aspect-ratio: 3/4;">
+          <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80" alt="Rodaje">
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <span class="project-category">Vestuario Producción</span>
+            <h3 class="project-title">Rodaje "Mar Adentro"</h3>
+          </div>
+        </div>
+        
+        <!-- Proyecto 3 -->
+        <div class="project-card fade-in fade-in-delay-2" style="aspect-ratio: 3/4;">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" alt="Transformación">
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <span class="project-category">Asesoría de Imagen</span>
+            <h3 class="project-title">Transformación Paula</h3>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="about">
-    <div class="container">
-      <div class="about-content">
-        <div class="about-label">
-          <h2 class="headline-md">Quiénes somos</h2>
-        </div>
-        <div class="about-text">
-          <p class="body-lg">DifortunaStudio es un estudio creativo fundado en Barcelona. Nacido de una trayectoria de 15 años en diseño, comunicación y gestión de proyectos, hoy es un espacio para lanzar ideas con impacto y acompañar a otros en sus procesos de creación.</p>
-          <p class="body-lg"><span class="highlight">No hacemos de todo. Hacemos lo que conecta.</span></p>
-        </div>
+  <!-- DIFOR Teaser -->
+  <section id="difor-teaser" style="display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh;">
+    <div style="background: url('https://images.unsplash.com/photo-1558171813-4c088753af8f?w=1000&q=80'); background-size: cover; background-position: center;"></div>
+    <div class="section-warm" style="display: flex; flex-direction: column; justify-content: center; padding: 80px;">
+      <span class="label label-accent fade-in">DIFOR / ElizabethDifortuna</span>
+      <h2 class="title-lg fade-in fade-in-delay-1" style="margin-bottom: 24px;">
+        Moda que se hereda,<br>no que se consume.
+      </h2>
+      <p class="body-text fade-in fade-in-delay-2" style="margin-bottom: 40px; max-width: 400px;">
+        Kimonos en tafetá, piezas con estampado leopardo, pantalones de 
+        tiro alto en algodón. Prendas diseñadas y confeccionadas en nuestro 
+        estudio, pensadas para durar y para hacer sentir.
+      </p>
+      <div class="fade-in fade-in-delay-3">
+        <a href="difor.html" class="btn-primary">Explorar DIFOR</a>
       </div>
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section class="services">
-    <div class="container">
-      <div class="services-header">
-        <h2 class="headline-lg">¿En qué te podemos ayudar?</h2>
-      </div>
-      
-      <div class="services-grid">
-        <div class="service-item">
-          <div class="service-number">01</div>
-          <h3 class="service-title">Diseño de marca e identidad visual</h3>
-          <p class="service-description">Creamos identidades visuales que conectan con tu audiencia y transmiten los valores de tu marca de forma auténtica.</p>
-        </div>
-        
-        <div class="service-item">
-          <div class="service-number">02</div>
-          <h3 class="service-title">Diseño UX/UI de apps y webs</h3>
-          <p class="service-description">Diseñamos experiencias digitales intuitivas que convierten visitantes en usuarios satisfechos y comprometidos.</p>
-        </div>
-        
-        <div class="service-item">
-          <div class="service-number">03</div>
-          <h3 class="service-title">Prototipos y presentaciones</h3>
-          <p class="service-description">Convertimos ideas abstractas en prototipos funcionales y presentaciones que comunican tu visión con claridad.</p>
-        </div>
-        
-        <div class="service-item">
-          <div class="service-number">04</div>
-          <h3 class="service-title">Consultoría creativa estratégica</h3>
-          <p class="service-description">Te ayudamos a definir la estrategia creativa que mejor se adapte a tus objetivos de negocio y comunicación.</p>
-        </div>
-        
-        <div class="service-item">
-          <div class="service-number">05</div>
-          <h3 class="service-title">Animación 2D/3D</h3>
-          <p class="service-description">Junto a HerokidStudio, creamos animaciones que dan vida a tus ideas y proyectos con impacto visual.</p>
-        </div>
-      </div>
-      
-      <div class="network-note">
-        <p class="body-lg" style="text-align: center; margin-top: 4rem; font-style: italic; color: var(--gray-medium);">
-          Colaboramos con algunos de los mejores creativos de Barcelona para convertir tu idea en algo único.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact">
-    <div class="container">
-      <div class="contact-content">
-        <div class="contact-info">
-          <h2 class="headline-md">¿Necesitas presupuesto?</h2>
-          <p class="body-lg">Cuéntanos tu proyecto y encontraremos la mejor forma de hacerlo realidad. Cada idea merece el equipo adecuado.</p>
-          
-          <div class="network-note">
-            <p>Colaboramos con algunos de los mejores creativos de Barcelona para convertir tu idea en algo único.</p>
+  <!-- Estudio -->
+  <section id="estudio" class="section">
+    <div class="container-wide">
+      <div class="grid-2">
+        <div>
+          <span class="label fade-in">El Estudio</span>
+          <h2 class="title-lg fade-in fade-in-delay-1" style="margin-bottom: 32px;">
+            Pequeño estudio,<br>gran visión.
+          </h2>
+          <p class="body-text fade-in fade-in-delay-2" style="margin-bottom: 24px;">
+            Desde nuestro estudio en Barcelona, combinamos asesoría de imagen 
+            personal con confección artesanal. Un espacio donde el análisis de color y 
+            silueta convive con la máquina de coser y el patronaje.
+          </p>
+          <p class="body-text fade-in fade-in-delay-3" style="margin-bottom: 40px;">
+            Somos dos generaciones trabajando juntas: más de 30 años de experiencia 
+            en confección y modistería, combinados con una visión contemporánea del 
+            estilismo y la imagen personal.
+          </p>
+          <div class="fade-in fade-in-delay-4">
+            <a href="contacto.html" class="btn-primary">Conoce el estudio</a>
           </div>
         </div>
-        
-        <div class="contact-form">
-         <form action="https://formsubmit.co/hola@difortunastudio.com" method="POST">
-            <div class="form-group">
-              <label for="tipo" class="label">¿Qué te gustaría crear?</label>
-              <select id="tipo" name="tipo" required>
-                <option value="">Selecciona una opción</option>
-                <option>Una app</option>
-                <option>Una marca</option>
-                <option>Un vídeo/animación</option>
-                <option>Una web</option>
-                <option>Otro...</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="objetivo" class="label">¿Cuál es tu objetivo principal?</label>
-              <textarea id="objetivo" name="objetivo" rows="3" required placeholder="Cuéntanos qué quieres lograr..."></textarea>
-            </div>
-            
-            <div class="form-group">
-              <label for="inspiracion" class="label">¿Qué te inspira con esta idea?</label>
-              <textarea id="inspiracion" name="inspiracion" rows="3" placeholder="Comparte tu inspiración..."></textarea>
-            </div>
-            
-            <!-- <div class="form-group">
-              <label for="referencias" class="label">Referencias visuales (opcional)</label>
-              <input type="file" id="referencias" name="referencias" multiple accept="image/*,.pdf,.doc,.docx" style="background: rgba(255, 255, 255, 0.1); border: 2px dashed rgba(255, 255, 255, 0.3); padding: 2rem; text-align: center; cursor: pointer;">
-              <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin-top: 0.5rem;">
-                Puedes subir imágenes, PDFs o documentos que nos ayuden a entender tu visión
-              </p>
-            </div> -->
-            
-            <div class="form-group">
-              <label for="presupuesto" class="label">Presupuesto estimado</label>
-              <select id="presupuesto" name="presupuesto">
-                <option value="">Selecciona un rango</option>
-                <option>&lt;500 €</option>
-                <option>500–2 000 €</option>
-                <option>2 000–10 000 €</option>
-                <option>&gt;10 000 €</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="contacto" class="label">Email de contacto</label>
-              <input type="email" id="contacto" name="contacto" placeholder="tucorreo@ejemplo.com" required>
-            </div>
-
-            <input type="hidden" name="_next" value="https://difortunastudio.com/gracias.html">
-
-            <button type="submit" class="submit-btn">Enviar propuesta</button>
-          </form>
-        </div>
+        <div class="fade-in fade-in-delay-2" style="aspect-ratio: 4/5; background: url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80'); background-size: cover; background-position: center;"></div>
       </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="section section-light" style="text-align: center;">
+    <div class="container-narrow">
+      <span class="label fade-in">Contacto</span>
+      <h2 class="title-lg fade-in fade-in-delay-1" style="margin-bottom: 24px;">
+        ¿Tienes un proyecto<br>en mente?
+      </h2>
+      <p class="body-text fade-in fade-in-delay-2" style="margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto;">
+        Nos encantaría conocerlo. Cuéntanos qué necesitas y 
+        encontraremos la mejor forma de colaborar.
+      </p>
+      <div class="fade-in fade-in-delay-3">
+        <a href="contacto.html" class="btn-primary">Hablemos</a>
+      </div>
+      <p class="fade-in fade-in-delay-4" style="margin-top: 32px; font-size: 14px; color: #999;">
+        hola@difortunastudio.com
+      </p>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div>
-          <span class="label">DifortunaStudio — Barcelona, 2025</span>
-          <br>
-          <span style="color: var(--gray-medium); font-size: 0.8rem; margin-top: 0.5rem; display: inline-block;">
-            Calle Joan d'Austria 95, 2º 3ª — 08018 Barcelona
-          </span>
-        </div>
-        <div class="footer-links">
-          <a href="mailto:hola@difortunastudio.com">hola@difortunastudio.com</a>
-          <a href="tel:+34608701745">+34 608 701 745</a>
-          <a href="https://instagram.com/difortunastudio" target="_blank">Instagram</a>
-          <span>© Todos los derechos reservados</span>
-        </div>
+  <footer>
+    <div class="container-wide" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+      <div>
+        <span class="footer-brand">Difortuna Studio</span>
+        <span class="footer-sub">
+          Joan d'Austria 95-97, 2º 3ª<br>
+          08018 Barcelona
+        </span>
       </div>
+      <div class="footer-links">
+        <a href="#" class="nav-link">Instagram</a>
+        <a href="#" class="nav-link">LinkedIn</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+      </div>
+      <span class="footer-copy">© 2025 Difortuna Studio</span>
     </div>
   </footer>
 
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Fade in on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
 </body>
 </html>
-
