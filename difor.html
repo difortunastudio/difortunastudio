@@ -102,19 +102,80 @@
       background: rgba(26,26,26,0.2);
     }
 
-    @media (max-width: 968px) {
+    /* Enhanced responsive styles for DIFOR */
+    @media (max-width: 1024px) {
       .pieces-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+      .encargos-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pieces-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
       }
       .encargos-grid {
         grid-template-columns: 1fr;
         gap: 48px;
+      }
+      
+      /* Hero section adjustments */
+      .hero h1 {
+        font-size: clamp(44px, 10vw, 100px) !important;
+      }
+      
+      /* Image responsive adjustments */
+      .piece-item img, .encargo-item img {
+        object-fit: cover;
+        width: 100%;
+        height: auto;
       }
     }
     
     @media (max-width: 640px) {
       .pieces-grid {
         grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .encargos-grid {
+        gap: 40px;
+      }
+      
+      /* Typography adjustments for mobile */
+      .hero h1 {
+        font-size: clamp(36px, 8vw, 80px) !important;
+        margin-bottom: 24px !important;
+      }
+      
+      .hero p {
+        font-size: 16px !important;
+        line-height: 1.5 !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .pieces-grid {
+        gap: 24px;
+      }
+      .encargos-grid {
+        gap: 32px;
+      }
+      
+      .hero h1 {
+        font-size: clamp(32px, 7vw, 64px) !important;
+      }
+      
+      .piece-item h3, .encargo-item h3 {
+        font-size: 18px !important;
+      }
+      
+      .piece-item p, .encargo-item p {
+        font-size: 14px !important;
       }
     }
   </style>
@@ -130,7 +191,20 @@
       <a href="#encargos" class="nav-link">Encargos</a>
       <a href="index.html" class="nav-link" style="opacity: 0.5;">Studio</a>
     </div>
+    <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <a href="#piezas" class="nav-link" onclick="closeMobileMenu()">Piezas</a>
+    <a href="#historia" class="nav-link" onclick="closeMobileMenu()">Historia</a>
+    <a href="#encargos" class="nav-link" onclick="closeMobileMenu()">Encargos</a>
+    <a href="index.html" class="nav-link" onclick="closeMobileMenu()">Studio</a>
+  </div>
 
   <!-- Hero -->
   <section style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 48px; position: relative;">
@@ -473,6 +547,27 @@
         nav.classList.remove('scrolled');
       }
     });
+
+    // Mobile menu functionality
+    function toggleMobileMenu() {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const overlay = document.getElementById('mobileNavOverlay');
+      
+      toggle.classList.toggle('active');
+      overlay.classList.toggle('active');
+      
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+    }
+    
+    function closeMobileMenu() {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const overlay = document.getElementById('mobileNavOverlay');
+      
+      toggle.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
 
     // Fade in on scroll
     const observerOptions = {

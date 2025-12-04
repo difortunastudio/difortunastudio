@@ -22,7 +22,21 @@
       <a href="index.html#proyectos" class="nav-link">Proyectos</a>
       <a href="contacto.html" class="btn-primary">Hablemos</a>
     </div>
+    <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <a href="index.html#estudio" class="nav-link" onclick="closeMobileMenu()">Estudio</a>
+    <a href="servicios.html" class="nav-link" onclick="closeMobileMenu()">Servicios</a>
+    <a href="difor.html" class="nav-link" onclick="closeMobileMenu()">DIFOR</a>
+    <a href="index.html#proyectos" class="nav-link" onclick="closeMobileMenu()">Proyectos</a>
+    <a href="contacto.html" class="btn-primary" onclick="closeMobileMenu()">Hablemos</a>
+  </div>
 
   <!-- Hero -->
   <section class="hero" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; position: relative;">
@@ -253,6 +267,27 @@
         nav.classList.remove('scrolled');
       }
     });
+
+    // Mobile menu functionality
+    function toggleMobileMenu() {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const overlay = document.getElementById('mobileNavOverlay');
+      
+      toggle.classList.toggle('active');
+      overlay.classList.toggle('active');
+      
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+    }
+    
+    function closeMobileMenu() {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const overlay = document.getElementById('mobileNavOverlay');
+      
+      toggle.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
 
     // Fade in on scroll
     const observerOptions = {
