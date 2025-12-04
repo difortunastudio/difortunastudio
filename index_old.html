@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Difortuna Studio — Estética, Artesanía y Visión Creativa</title>
+  <meta name="description" content="Estudio creativo en Barcelona. Asesoría de imagen, confección a medida y vestuario para producciones.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .body-lg {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    .body-md {
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    .label {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* Layout System */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      padding: 4rem 0;
+    }
+
+    .hero-logo {
+      position: absolute;
+      top: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .hero-logo svg {
+      width: 80px;
+      height: 80px;
+      animation: logoFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+      }
+      25% { 
+        transform: translateY(-5px) rotate(1deg);
+      }
+      50% { 
+        transform: translateY(-3px) rotate(0deg);
+      }
+      75% { 
+        transform: translateY(-8px) rotate(-1deg);
+      }
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      min-height: 70vh;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .hero-headline {
+      position: relative;
+    }
+
+    .hero-headline::after {
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+    }
+
+    .hero-visual {
+      position: relative;
+      height: 600px;
+      background: var(--gray-light);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: 'DIFORTUNA';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-5deg);
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem;
+      font-weight: 900;
+      color: rgba(10, 10, 10, 0.08);
+      letter-spacing: -0.05em;
+      user-select: none;
+      pointer-events: none;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { 
+        opacity: 0.08;
+        transform: translate(-50%, -50%) rotate(-5deg) scale(1);
+      }
+      50% { 
+        opacity: 0.15;
+        transform: translate(-50%, -50%) rotate(-3deg) scale(1.02);
+      }
+    }
+
+    .floating-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .circle-1 {
+      width: 120px;
+      height: 120px;
+      top: 10%;
+      right: 15%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .circle-2 {
+      width: 80px;
+      height: 80px;
+      bottom: 20%;
+      left: 10%;
+      background: var(--black);
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    .circle-3 {
+      width: 50px;
+      height: 50px;
+      top: 60%;
+      right: 30%;
+      background: var(--gray-medium);
+      animation: float 10s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* About Section */
+    .about {
+      padding: 8rem 0;
+      background: var(--gray-light);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .about-label {
+      position: sticky;
+      top: 2rem;
+    }
+
+    .about-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 8rem 0;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+
+    .service-item {
+      padding: 3rem 0;
+      border-top: 1px solid var(--gray-medium);
+      position: relative;
+      transition: all 0.3s cubic-bezier(.4,1.4,.6,1);
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+      will-change: transform, box-shadow;
+    }
+
+    .service-item:hover {
+      transform: translateY(-10px) scale(1.025);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+      border-top: 1px solid var(--accent);
+      z-index: 2;
+    }
+
+    .service-item:hover .service-number {
+      color: var(--accent);
+    }
+
+    .service-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--gray-light);
+      transition: all 0.3s ease;
+      margin-bottom: 1rem;
+    }
+
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .service-description {
+      color: var(--gray-medium);
+      line-height: 1.6;
+    }
+
+    .badge-estado {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 100px;
+      padding: 0.18em 1em 0.18em 1em;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.04em;
+      vertical-align: middle;
+      box-shadow: 0 2px 8px rgba(255,107,53,0.08);
+    }
+
+    /* Minimal CTA button for project cards */
+    .mini-btn {
+      background: none;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.4rem 1.1rem;
+      border-radius: 100px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      margin-top: 1.2rem;
+      display: inline-block;
+    }
+    .mini-btn:hover {
+      background: var(--accent);
+      color: var(--white);
+    }
+    .service-item .mini-btn {
+      width: auto;
+      min-width: 0;
+      box-shadow: none;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 8rem 0;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 3rem;
+      border-radius: 2px;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-group {
+      margin-bottom: 2rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0;
+      color: var(--white);
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .form-group input[type="file"] {
+      background: rgba(255, 255, 255, 0.1) !important;
+      border: 2px dashed rgba(255, 255, 255, 0.3) !important;
+      padding: 2rem !important;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input[type="file"]:hover {
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    .form-group input[type="file"]:focus {
+      border-color: var(--accent);
+    }
+
+    .submit-btn {
+      background: var(--accent);
+      color: var(--white);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .direct-contact {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .direct-contact a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .network-note {
+      margin-top: 2rem;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Separador visual/acento */
+    .section-separator {
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--gray-light) 100%);
+      border-radius: 2px;
+      margin: 3rem auto 3rem auto;
+      opacity: 0.7;
+    }
+
+    /* Frase inspiradora */
+    .manifiesto {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 3rem auto 2rem auto;
+      max-width: 700px;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    /* Footer microdetalle */
+    .footer-made {
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 1.5rem;
+      text-align: right;
+      letter-spacing: 0.01em;
+    }
+
+    .footer-links a[href^="mailto"] {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .footer-links a[href^="mailto"]:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--black);
+      padding: 4rem 0 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--gray-medium);
+    }
+
+    .footer-links a {
+      color: var(--gray-medium);
+      text-decoration: none;
+      margin-left: 2rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .hero-content,
+      .about-content,
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .hero-visual {
+        height: 400px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .footer-links a {
+        margin: 0 1rem;
+      }
+
+      .service-item {
+        border-radius: 6px;
+        padding: 2rem 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-logo">
+      <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="95" fill="none" stroke="#0a0a0a" stroke-width="2"/>
+        <circle cx="100" cy="100" r="88" fill="none" stroke="#0a0a0a" stroke-width="1"/>
+        <text x="100" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0a0a0a" letter-spacing="2">DIFORTUNA</text>
+        <line x1="65" y1="100" x2="135" y2="100" stroke="#0a0a0a" stroke-width="1"/>
+        <text x="100" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#0a0a0a" letter-spacing="3">STUDIO</text>
+      </svg>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="headline-xl hero-headline">Ideas digitales para el presente y el futuro</h1>
+          <p class="body-lg">Un portfolio vivo de proyectos, apps y conceptos listos para crecer, colaborar o monetizar.<br>Explora, conecta y súmate a la próxima idea.</p>
+          <a href="#proyectos" class="submit-btn" style="width:auto;display:inline-block;margin-top:2rem;">→ Descubre las ideas</a>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="floating-elements">
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+            <div class="floating-circle circle-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separador visual/acento -->
+  <div class="section-separator"></div>
+  <!-- Frase inspiradora -->
+  <div class="manifiesto">Las ideas no cambian el mundo, las personas que las hacen realidad sí.</div>
+
+  <!-- About Section -->
+  <section class="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-label">
+          <h2 class="headline-md">¿QUIÉN ESTÁ DETRÁS?</h2>
+        </div>
+        <div class="about-text">
+          <h3 class="headline-md" style="font-size:2rem;">Generando ideas, conectando oportunidades</h3>
+          <p class="body-lg">Soy Fiorella Gallo. Difortuna Studio es mi espacio de experimentación y lanzamiento de ideas digitales: apps, servicios y conceptos con potencial de impacto y negocio.<br>
+Aquí comparto proyectos en distintas fases, abiertos a colaboración, inversión o feedback. Si alguna idea te resuena, ¡hablemos!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <div class="container">
+      <div class="services-header">
+        <h2 class="headline-lg">Lo que hacemos</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-number">01</div>
+          <h3 class="service-title">Apps con IA</h3>
+          <p class="service-description">Diseño y desarrollo de aplicaciones útiles, bellas y conscientes potenciadas por inteligencia artificial.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-number">02</div>
+          <h3 class="service-title">Identidad digital</h3>
+          <p class="service-description">Creamos marcas y experiencias digitales con propósito y visión humana.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ideas & Proyectos Section -->
+  <section id="proyectos" class="services">
+    <div class="container">
+      <div class="services-header">
+        <h2 class="headline-lg">Ideas y proyectos</h2>
+        <p class="body-lg" style="margin-top:1rem; color:var(--gray-medium); max-width:600px; margin-left:auto; margin-right:auto;">Explora conceptos en distintas fases: desde prototipos hasta proyectos en busca de socios, inversión o feedback. Haz clic en "Me interesa" para conectar sobre cualquier idea.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-item">
+          <span class="badge-estado">En desarrollo</span>
+          <h3 class="service-title">NUMA369</h3>
+          <p class="service-description">App de numerología para decisiones conscientes y conexión con tu propósito de vida.</p>
+          <a href="#contacto" class="mini-btn">Me interesa</a>
+        </div>
+        <div class="service-item">
+          <span class="badge-estado">Buscando alianzas</span>
+          <h3 class="service-title">MoneyCouple</h3>
+          <p class="service-description">Gestión financiera para parejas. Transparencia, acuerdos y visión compartida.</p>
+          <a href="#contacto" class="mini-btn">Me interesa</a>
+        </div>
+        <div class="service-item">
+          <span class="badge-estado">Prototipo</span>
+          <h3 class="service-title">Planify</h3>
+          <p class="service-description">Organiza planes, regalos y gastos entre amigos sin caos. Todo en una sola app.</p>
+          <a href="#contacto" class="mini-btn">Me interesa</a>
+        </div>
+        <div class="service-item">
+          <span class="badge-estado">Abierta a inversión</span>
+          <h3 class="service-title">IAIA App</h3>
+          <p class="service-description">Acompañamiento personalizado para personas mayores. Cuidado con corazón y control inteligente.</p>
+          <a href="#contacto" class="mini-btn">Me interesa</a>
+        </div>
+        <div class="service-item">
+          <span class="badge-estado">En ideación</span>
+          <h3 class="service-title">TheMatchMaker</h3>
+          <p class="service-description">Presión ciudadana organizada. Una herramienta para crear cambios reales desde los datos.</p>
+          <a href="#contacto" class="mini-btn">Me interesa</a>
+        </div>
+        <div class="service-item">
+          <span class="badge-estado">Próximamente</span>
+          <h3 class="service-title">Nuevas ideas</h3>
+          <p class="service-description">Más apps y conceptos digitales en desarrollo. ¿Tienes una propuesta? ¡Súmate!</p>
+          <a href="#contacto" class="mini-btn">Proponer idea</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contacto">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2 class="headline-md">¿Te interesa colaborar, invertir o proponer algo?</h2>
+          <h3 class="headline-md" style="font-size:2rem; margin-bottom:1rem;">Conversemos sobre cualquier idea</h3>
+          <p class="body-lg">¿Te resuena alguna idea del portfolio? ¿Quieres sumar tu talento, invertir, aportar feedback o lanzar algo juntos? Completa el formulario y te responderé personalmente.</p>
+        </div>
+        <div class="contact-form">
+          <form action="https://formsubmit.co/hola@difortunastudio.com" method="POST">
+            <div class="form-group">
+              <label for="nombre" class="label">Nombre</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="label">Email</label>
+              <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+            </div>
+            <div class="form-group">
+              <label for="mensaje" class="label">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="5" required placeholder="¿Sobre qué idea quieres hablar? ¿Cómo te gustaría participar? ¿Tienes una propuesta? Cuéntame lo que quieras."></textarea>
+            </div>
+            <input type="hidden" name="_next" value="https://difortunastudio.com/gracias.html">
+            <button type="submit" class="submit-btn">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visión a Futuro Section -->
+  <section class="about" style="background: var(--white);">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-label">
+          <h2 class="headline-md">VISIÓN A FUTURO</h2>
+        </div>
+        <div class="about-text">
+          <h3 class="headline-md" style="font-size:2rem;">Un ecosistema de microempresas digitales con alma</h3>
+          <p class="body-lg">Cada app que creamos puede evolucionar como proyecto independiente, con su propio modelo de negocio, equipo y propósito. Desde nuestra holding FGD VII, impulsemos ideas con valor para el presente y futuro.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <span class="label">DifortunaStudio — Barcelona, 2025</span>
+          <br>
+          <span style="color: var(--gray-medium); font-size: 0.8rem; margin-top: 0.5rem; display: inline-block;">
+            Calle Joan d'Austria 95, 2º 3ª — 08018 Barcelona
+          </span>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:hola@difortunastudio.com">hola@difortunastudio.com</a>
+          <a href="tel:+34608701745">+34 608 701 745</a>
+          <a href="https://instagram.com/difortunastudio" target="_blank">Instagram</a>
+          <span>© Todos los derechos reservados</span>
+        </div>
+      </div>
+      <div class="footer-made">Made with ♥ in Barcelona — <span id="year"></span></div>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico en el footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
