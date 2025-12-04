@@ -135,6 +135,16 @@
         width: 100%;
         height: auto;
       }
+      
+      /* Historia section image fix for mobile */
+      .grid-2 {
+        gap: 60px !important;
+      }
+      
+      .grid-2 > div:last-child {
+        min-height: 300px !important;
+        aspect-ratio: 3/4 !important;
+      }
     }
     
     @media (max-width: 640px) {
@@ -156,6 +166,14 @@
         font-size: 16px !important;
         line-height: 1.5 !important;
       }
+      
+      /* Historia image better size for mobile */
+      .grid-2 > div:last-child {
+        min-height: 280px !important;
+        aspect-ratio: 1/1 !important;
+        border-radius: 8px;
+        overflow: hidden;
+      }
     }
     
     @media (max-width: 480px) {
@@ -176,6 +194,12 @@
       
       .piece-item p, .encargo-item p {
         font-size: 14px !important;
+      }
+      
+      /* Historia image even bigger for small phones */
+      .grid-2 > div:last-child {
+        min-height: 250px !important;
+        margin-top: 20px;
       }
     }
   </style>
@@ -379,7 +403,7 @@
         </p>
       </div>
 
-      <div class="fade-in fade-in-delay-1" style="aspect-ratio: 4/5; background: url('images/diforteam.png?v=3'); background-size: cover; background-position: center;"></div>
+      <div class="fade-in fade-in-delay-1" style="aspect-ratio: 4/5; background: url('images/diforteam.png?v=3'); background-size: cover; background-position: center; min-height: 400px;"></div>
     </div>
   </section>
 
